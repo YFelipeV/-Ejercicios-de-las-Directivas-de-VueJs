@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>VUE</title>
+
+</head>
+
+<body class="bg-warning">
+    <div class="container bg-dark text-light mt-2 w-50 ">
+        <main id="app" class="row gap-3 ">
+
+            <div>
+                <h1><code>Directiva</code> </h1>
+                <h2>tu nombre es: {{name}} </h2>
+                <h2>tienes: {{age}} años</h2>
+                <hr>
+            </div>
+
+            <div>
+                <h1>Directiva <code>v-text</code></h1>
+                <h3 v-text="nombre"></h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-html</code></h1>
+                <div v-html="correo"></div>
+                <div v-html="loginType"></div>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-show</code></h1>
+                <h3 v-show="age>18">Eres mayor de edad</h3>
+                <h3 v-show="age<18">Eres menor de edad</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-if</code></h1>
+                <h3 v-if="age>18">Eres mayor de edad</h3>
+                <h3 v-if="age<18">Eres menor de edad</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-if-else</code></h1>
+                <h3 v-if="gender === 'F'">Eres mujer</h3>
+                <h3 v-else-if="gender === 'M'">Eres Hombre</h3>
+                <h3 v-else-if="gender === 'O'">Eres otro</h3>
+                <h3 v-else>No identificado</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-for</code></h1>
+                <h3 v-for="animal, index in animals" :key="index">{{index+1}} {{animal}}</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-on</code></h1>
+                <button class="btn btn-primary mx-2" v-on:click="counter += 1">Agregar</button>
+                <button class="btn btn-success" v-on:click="counter -= 1">Reset</button>
+                <p>se ha hecho <b>{{counter}}</b>clicls</p>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-bind</code></h1>
+                <img v-bind:src="img" v-bind:alt="alt" v-bind:style="border">
+                <img :src="img" :alt="alt" :style="border">
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-model</code></h1>
+                <h2>tu nombre es: <b class="text-primary">🗣️{{name}}</b></h2>
+                <label class="form-label" for="">Tu nombre es:</label>
+                <input class="form-control redonde" type="text" v-model="name" placeholder="example@gmail.com">
+                <hr>
+                <h1>Ejemplo 2</h1>
+                <input class="form-control redonde" v-model="message" placeholder="Editame">
+                <p>el mensaje es: <b class="text-warning ">{{message}}</b></p>
+                <hr>
+            </div>
+
+
+
+        </main>
+        <section id="app1">
+
+        </section>
+    </div>
+    <script>
+        const hola = {
+            data() {
+                return {
+                    nombre: "felipe segura",
+                    name: " ",
+                    age: 20,
+                    gender: "M",
+                    animals: ["gato", "perro", "pajaro", "loro", "cerdo", "caballo"],
+                    loginType: "<h2>YSegura</h2>",
+                    counter: 0,
+                    correo: "<h2 class=text-primary>felipesegura250@gmail.com</h2",
+                    img: "./imagenes/1.jpeg",
+                    alt: "logo",
+                    border: "border-radius:8px;border:10px solid red; margin-left:28px",
+                    message: " "
+
+                };
+            },
+        };
+        const hello = {
+            data() {
+                return {
+                    direccion: "calle 5c 58-30",
+                    telefono: 3112474569,
+                    edad: 18
+                }
+            }
+        }
+        Vue.createApp(hola).mount("#app");
+        Vue.createApp(hello).mount("#app1");
+
+    </script>
+</body>
+
+</html>
